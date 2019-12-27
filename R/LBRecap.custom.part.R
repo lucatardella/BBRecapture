@@ -1,3 +1,57 @@
+#' Unconditional likelihood inference for behavioural effect models based on an ad-hoc partition of the set of all partial capture histories
+#'
+#' Unconditional likelihood inference for a general model framework based on the capture probabilities conditioned on each possible partial capture history. As suggested in Alunni Fegatelli and Tardella (2012) the conditional approach originally proposed in Farcomeni (2011)  [saturated reparameterization] is reviewed in terms of partitions into equivalence classes of conditional probabilities. In this function the user can directly provide the model as a partition.
+#'
+#' @usage LBRecap.custom.part (data,last.column.count=FALSE, partition, neval = 1000,
+#'    by.incr = 1, output = c("base", "complete"))
+#'
+#' @param data can be one of the following:
+#' \enumerate{
+#'   \item an \eqn{M} by \eqn{t} binary matrix/data.frame
+#'   \item a matrix/data.frame with \eqn{(t+1)} columns according to the value of \cr \code{last.column.count}
+#'   \item a \eqn{t}-dimensional array or table representing the counts of the \eqn{2^t} contingency table of binary outcomes
+#'   \eqn{M} is the number of units captured at least once and \eqn{t} is the number of capture occasions.
+#'   }
+#' @param last.column.count a logical. In the default case \code{last.column.count=FALSE} each row of \code{data} represents the complete capture history for each observed unit. When code{last.column.count=TRUE} in each row the first \eqn{t} entries represent one of the possible observed complete capture histories and the last entry (last column) is the number of observed units with that capture history
+
+
+#' @param partition list. \code{partition} represents a partition of the set of all partial capture histories.
+#' @param neval a positive integer. \code{neval} is the number of values evaluated for the population size N. The default value is \code{neval}=1000.
+#' @param by.incr a positive integer. \code{by.incr} represents the increment on the sequence of evaluated values for \eqn{N}. The default value is \code{by.incr}=1.
+#' @param output character. \code{output} select the kind of output from a very basic summary info on the posterior output (point and interval estimates for the unknown \code{N}) to more complete details.
+#'
+#' @details The unconditional likelihood is evaluated by means of \code{glm/glmer} for each value of the \code{N} parameter and it is then maximized.
+#'
+#' @return
+#'  (if \code{output="complete"}) the function \code{LBRecap} returns a list of:
+#'  \enumerate{
+#'   \item{N.hat}{unconditional maximum likelihood estimate for \eqn{N}}
+#'   \item{CI}{interval estimate for \eqn{N}}
+#'   \item{pH.hat}{point estimate of nuisance parameters (conditional probabilities)}
+#'   \item{AIC}{Akaike information criterion.}
+#'   \item{L.Failure}{Likelihood Failure condition}
+#'   \item{N.range}{sequence of \eqn{N} values considered}
+#'   \item{log.lik}{values of the log-likelihood distribution for each \eqn{N} considered}
+#'   \item{partitions}{list of subsets of partial capture histories corresponding to equivalence classes}
+#'   }
+#'
+#' @references
+#' Alunni Fegatelli, D. and Tardella, L. (2012) Improved inference on capture recapture models with behavioural effects. Statistical Methods & Applications Applications Volume 22, Issue 1, pp 45-66 10.1007/s10260-012-0221-4
+#'
+#' Farcomeni A. (2011) Recapture models under equality constraints for the conditional capture probabilities. Biometrika 98(1):237--242
+#'
+#' @author Danilo Alunni Fegatelli and Luca Tardella
+#'
+#' @seealso \code{\link{partition.ch}}, \code{\link{BBRecap.custom.part}}, \code{\link{LBRecap}}
+#'
+#' @examples
+#' data(greatcopper)
+#' partition.Mc1=partition.ch(quant.binary,t=ncol(greatcopper),breaks=c(0,0.5,1))
+#' mod.Mc1=LBRecap.custom.part(greatcopper,partition=partition.Mc1)
+#' str(mod.Mc1)
+#'
+#' @keywords Behavioural models Unconditional MLE
+#'
 #' @export
 LBRecap.custom.part=function(
 data,

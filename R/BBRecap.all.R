@@ -1,3 +1,76 @@
+#' Comparative Bayesian analysis of alternative flexible behavioural and time effect models
+#'
+#' Comparative point and interval estimates for the population size \eqn{N} obtained fitting many alternative behavioural and time effect capture-recapture models.
+#' Log marginal likelihood is reported for each alternative model.
+#'
+#' @usage BBRecap.all(data, last.column.count=FALSE, neval=1000, by.incr=1,nsim=10000,
+#' burnin=round(nsim/10),nsim.ML=500,burnin.ML=round(nsim.ML/10), num.t = 50,
+#' prior.N = c("Rissanen","Uniform","one.over.N","one.over.N2"),
+#' which.mod=c("all","standard"), sort=c("default","log.ML"))
+#'
+#' @param data can be one of the following: \enumerate{
+#'   \item an \eqn{M} by \eqn{t} binary matrix/data.frame. In this case the input is interpreted as a matrix whose rows contain individual capture histories for all \eqn{M} observed units
+#'   \item a matrix/data.frame with \eqn{(t+1)} columns. The first \eqn{t} columns contain binary entries corresponding to capture occurrences, while the last column contains non negative integers corresponding to frequencies. This format is allowed only when \code{last.column.count} is set to \code{TRUE}
+#'   \item a \eqn{t}-dimensional array or table representing the counts of the \eqn{2^t} contingency table of binary outcomes
+#' }
+#' \eqn{M} is the number of units captured at least once and \eqn{t} is the number of capture occasions.
+#' @param last.column.count a logical. In the default case \code{last.column.count=FALSE} each row of the input argument \code{data} represents the complete capture history for each observed unit. When \code{last.column.count} is set to \code{TRUE} in each row the first \eqn{t} entries represent one of the observed complete capture histories and the last entry in the last column is the number of observed units with that capture history
+#' @param neval a positive integer. \code{neval} is the number of values of the population size \eqn{N} where the posterior is evaluated starting from \eqn{M}. The default value is \code{neval}=1000.
+#' @param by.incr a positive integer. \code{nsim} is the number of iterations for the Metropolis-within-Gibbs algorithm which allows the approximation of the posterior. It is considered only if \code{mod} is \code{"linear.logistic"} or \code{"Msubjective"}. In the other cases closed form evaluation of the posterior is available up to a proportionality constant. The default value is \code{nsim=10000.}
+#' @param nsim a positive integer. \code{nsim} is the number of iterations for the Metropolis-within-Gibbs algorithm which allows the approximation of the posterior. It is considered only if \code{mod} is \code{"linear.logistic"} or \code{"Msubjective"}. In the other cases closed form evaluation of the posterior is available up to a proportionality constant. The default value is \code{nsim=10000.}
+#' @param burnin a positive integer. \code{burnin} is the initial number of MCMC samples discarded. It is considered only if \code{mod} is \code{"linear.logistic"}  or \code{"Msubjective"}. The default value for \code{burnin} is \code{round(nsim/10).}
+#' @param nsim.ML a positive integer. Whenever MCMC is needed \code{nsim.ML} is the number of iterations used in the marginal likelihood estimation procedure via power posterior method of Friel and Pettit (2008)
+#' @param burnin.ML a positive integer. Whenever MCMC is needed \code{burnin.ML} is the initial number of samples discarded for marginal likelihood estimation via power-posterior approach. The default value is \code{burnin.ML} is \code{round(nsim/10)}.
+#' @param num.t a positive integer. Whenever MCMC is needed \code{num.t} is the number of powers used in the power posterior approximation method for the marginal likelihood evaluation.
+#' @param prior.N a character. \code{prior.N} is the label for the prior distribution for \eqn{N}. When \code{prior.N} is set to \code{"Rissanen"} (default) the Rissanen prior is used as a prior on \eqn{N}. This distribution was first proposed in Rissanen 1983 as a universal prior on integers. \code{prior.N="Uniform"} stands for a prior on \eqn{N} proportional to a constant value. \code{prior.N="one.over.N"} stands for a prior on \eqn{N} proportional to \eqn{1/N}. \code{prior.N="one.over.N2"} stands for a prior on \eqn{N} proportional to \eqn{1/N^2}.
+#' @param which.mod a character. \code{which.mod} selects which models are fitted and compared. In the default setting \code{which.mod}=\code{"all"} all alternative models are fitted including new behavioural models based on alternative meaningful covariates (see Details). When \code{which.mod}=\code{"standard"} the function only fits classical behavioural models with either enduring effects as in \eqn{M_b}, \eqn{M_{c_1b}}, \eqn{M_{c_2b}} or ephemeral effects as in purely Markovian \eqn{M_{c_1}} and \eqn{M_{c_2}}
+#' @param sort character. \code{sort} selects the order of models.
+#'
+#' @details
+#' The available models are: \eqn{M_0}, \eqn{M_b}, \eqn{M_t}, \eqn{M_{c_1}}, \eqn{M_{c_1b}}, \eqn{M_{c_2}}, \eqn{M_{c_2b}}, \eqn{M_{mc}}, \eqn{M_{mc_{int}}}, \eqn{M_{mc_{count}}} and \eqn{M_{mc_{count.int}}}.
+#' This function \code{BBRecap.all} can be computing intensive for high values of \code{neval} and \code{nsim}.
+#'
+#' @return A \code{data.frame} with one row corresponding to each model and the following columns:
+#'
+#' A dataframe with one row corresponding to each model and the following columns:
+#'
+#' model: model considered
+#'
+#' npar: number of parameters
+#'
+#' log.marginal.likelihood: log marginal likelihood
+#'
+#' Nhat: estimate of population size
+#'
+#' Ninf: lower \eqn{95 \%} highest posterior density interval
+#'
+#' Nsup: upper \eqn{95 \%} highest posterior density interval
+#'
+#' @references
+#' Otis D. L., Burnham K. P., White G. C, Anderson D. R. (1978) Statistical Inference From Capture Data on Closed Animal Populations, Wildlife Monographs.
+#'
+#' Yang H.C., Chao A. (2005) Modeling animals behavioral response by Markov chain models for capture-recapture experiments, Biometrics 61(4), 1010-1017
+#'
+#' N. Friel and A. N. Pettitt. Marginal likelihood estimation via power posteriors. Journal of the Royal Statistical Society: Series B (Statistical Methodology), 70(3):589, 607--2008
+#'
+#' Farcomeni A. (2011) Recapture models under equality constraints for the conditional capture probabilities. Biometrika 98(1):237--242
+#'
+#' Alunni Fegatelli, D. and Tardella, L. (2012) Improved inference on capture recapture models with behavioural effects. Statistical Methods & Applications Applications Volume 22, Issue 1, pp 45-66 10.1007/s10260-012-0221-4
+#'
+#' Alunni Fegatelli D. (2013) New methods for capture-recapture modelling with behavioural response and individual heterogeneity.
+#'
+#' @author Danilo Alunni Fegatelli and Luca Tardella
+#'
+#' @seealso \code{\link{BBRecap}}
+#'
+#' @examples
+#'
+#' \dontrun{
+#' data(hornedlizard)
+#' BBRecap.all(hornedlizard,neval=200)
+#' }
+#'
+#' @keywords Behavioural models, Bayesian inference
 #' @export
 BBRecap.all=function(data, last.column.count=FALSE, neval=1000, by.incr=1,nsim=10000,
   burnin=round(nsim/10),nsim.ML=500,burnin.ML=round(nsim.ML/10), num.t = 50,
