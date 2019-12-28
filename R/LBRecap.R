@@ -127,7 +127,7 @@ if((mod!="Msubjective.cut") & length(z.cut)>0){
 
  data.matrix=data
 
-   if(any(c("array","table") %in% class(data))){
+   if( !("matrix" %in% class(data)) & any(c("array","table") %in% class(data))){
    	n.occ=length(dim(data))
 mm=matrix(ncol=n.occ,nrow=2^n.occ)
 

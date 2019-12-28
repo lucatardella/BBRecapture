@@ -9,8 +9,6 @@
 \alias{quant.binary.counts.integer}
 \title{Quantification of binary capture histories}
 \usage{
-quant.binary(x)
-
 quant.binary.integer(x)
 
 quant.binary(x)
@@ -36,6 +34,7 @@ The \code{quant.binary} family of functions allow to quantify binary capture his
 For a more detailed description of instances of meaningful behavioral covariates see Alunni Fegatelli and Tardella (2012) and Alunni Fegatelli (2013)[PhD Thesis]
 }
 \examples{
+
 ## Example of quantification with character input
 
 capt.hist="0110"
@@ -45,6 +44,7 @@ quant.binary.markov(capt.hist,markov.ord=2)
 quant.binary.integer(capt.hist)
 quant.binary.counts(capt.hist)
 quant.binary.counts.integer(capt.hist)
+
 ## Example of quantification with numeric input
 
 ch=c(0,1,1,0)

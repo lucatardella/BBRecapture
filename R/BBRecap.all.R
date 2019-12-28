@@ -86,7 +86,7 @@ BBRecap.all=function(data, last.column.count=FALSE, neval=1000, by.incr=1,nsim=1
 
     data.matrix=data
 
-	 if(any(c("array","table") %in% class(data))){
+    if( !("matrix" %in% class(data)) & any(c("array","table") %in% class(data))){
 
    	n.occ=length(dim(data))
 mm=matrix(ncol=n.occ,nrow=2^n.occ)

@@ -2,17 +2,12 @@
 #'
 #' The \code{quant.binary} family of functions allow to quantify binary capture histories (partial or complete) in terms of a meaningful quantity which can be interpreted as a possibly meaningful behavioral covariate (like memory persistence of previous capture history)
 #'
-#' @usage quant.binary(x)
-#' @usage quant.binary.markov(x, markov.ord)
-#' @usage quant.binary.integer(x)
-#' @usage quant.binary.counts(x)
-#' @usage quant.binary.counts.integer(x)
-#'
 #' @param x either a character string or a numeric vector exclusively made by binary entries 0 or 1.
 #' @param markov.ord a positive integer representing the order of the Markovian structure which one is willing to reproduce with suitable partition of the unit interval and the quantification of capture history standardized in the unit interval
 #' @details For a more detailed description of instances of meaningful behavioral covariates see Alunni Fegatelli and Tardella (2012) and Alunni Fegatelli (2013)[PhD Thesis]
 #' @return For \code{quant.binary} it returns a numeric value within the unit interval [0,1] and \cr \code{quant.binary.markov}. For \code{quant.binary.integer} it returns an integer value.
 #' @examples
+#'
 #' ## Example of quantification with character input
 #'
 #' capt.hist="0110"
@@ -22,6 +17,7 @@
 #' quant.binary.integer(capt.hist)
 #' quant.binary.counts(capt.hist)
 #' quant.binary.counts.integer(capt.hist)
+#'
 #' ## Example of quantification with numeric input
 #'
 #' ch=c(0,1,1,0)
