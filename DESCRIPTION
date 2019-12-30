@@ -1,6 +1,6 @@
 Package: BBRecapture
 Version: 0.2
-Date: 2019-12-30
+Date: 2019-12-31
 Type: Package
 Title: Bayesian Behavioural Capture-Recapture Models
 Author: Luca Tardella [aut, cre] (https://orcid.org/0000-0002-5703-3909),
