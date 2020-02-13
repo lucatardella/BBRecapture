@@ -109,7 +109,7 @@ Farcomeni A. (2011) Recapture models under equality constraints for the conditio
 
 Alunni Fegatelli, D. and Tardella, L. (2012) Improved inference on capture recapture models with behavioural effects. Statistical Methods & Applications Applications Volume 22, Issue 1, pp 45-66 10.1007/s10260-012-0221-4
 
-Alunni Fegatelli D. (2013) New methods for capture-recapture modelling with behavioural response and individual heterogeneity.
+Alunni Fegatelli D. (2013) New methods for capture-recapture modelling with behavioural response and individual heterogeneity. http://hdl.handle.net/11573/918752
 }
 \seealso{
 \code{\link{BBRecap.custom.part}}, \code{\link{LBRecap}}
@@ -117,7 +117,5 @@ Alunni Fegatelli D. (2013) New methods for capture-recapture modelling with beha
 \author{
 Danilo Alunni Fegatelli and Luca Tardella
 }
-\keyword{Bayesian}
-\keyword{Behavioural}
-\keyword{inference}
-\keyword{models,}
+\keyword{Bayesian_inference}
+\keyword{Behavioural_models}

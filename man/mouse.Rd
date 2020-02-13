@@ -23,4 +23,4 @@ str(mouse)
 \references{
 J. D. Nichols, K. H. Pollock and J. E. Hines, The Use of a Robust Capture-Recapture Design in Small Mammal Population Studies: A Field Example with Microtus Pennsylvanicus, Acta Theriologica, vol. 29. 30:357-365, 1984
 }
-\keyword{datasets}
+\keyword{Datasets}

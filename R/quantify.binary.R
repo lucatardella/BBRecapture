@@ -27,7 +27,7 @@
 #' quant.binary.counts(ch)
 #' quant.binary.counts.integer(ch)
 #'
-#' @keywords Partial capture history quantification
+#' @keywords Partial_capture_history_quantification
 #'
 #' @name quant
 NULL

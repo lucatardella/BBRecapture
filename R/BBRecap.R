@@ -80,7 +80,7 @@
 #'
 #' Alunni Fegatelli, D. and Tardella, L. (2012) Improved inference on capture recapture models with behavioural effects. Statistical Methods & Applications Applications Volume 22, Issue 1, pp 45-66 10.1007/s10260-012-0221-4
 #'
-#' Alunni Fegatelli D. (2013) New methods for capture-recapture modelling with behavioural response and individual heterogeneity.
+#' Alunni Fegatelli D. (2013) New methods for capture-recapture modelling with behavioural response and individual heterogeneity. http://hdl.handle.net/11573/918752
 #'
 #' @author Danilo Alunni Fegatelli and Luca Tardella
 #'
@@ -95,7 +95,7 @@
 #' str(mod.Mb)
 #' }
 #'
-#' @keywords Behavioural models, Bayesian inference
+#' @keywords Behavioural_models Bayesian_inference
 #' @export
 BBRecap=function(
   data,

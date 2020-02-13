@@ -10,7 +10,7 @@
 #'
 #' @format A matrix with 45 rows (observed butterflies) and 8 columns (capture occasions)
 #'
-#' @keywords datasets
+#' @keywords Datasets
 #'
 #' @references
 #'
@@ -44,7 +44,7 @@ NULL
 #'
 #' @format A matrix with 104 rows (observed animals) and 5 columns (capture occasions)
 #'
-#' @keywords datasets
+#' @keywords Datasets
 #'
 #' @references
 #'
@@ -74,7 +74,7 @@ NULL
 #'
 #' @format A matrix with 68 rows (observed lizards) and 14 columns (capture occasions)
 #'
-#' @keywords datasets
+#' @keywords Datasets
 #'
 #' @references
 #'
@@ -104,7 +104,7 @@ NULL
 #'
 #' @format A matrix with 68 rows (observed units) and 30 columns (capture occasions)
 #'
-#' @keywords datasets
+#' @keywords Datasets
 #'
 #' @references
 #'

@@ -55,7 +55,4 @@ quant.binary.counts(ch)
 quant.binary.counts.integer(ch)
 
 }
-\keyword{Partial}
-\keyword{capture}
-\keyword{history}
-\keyword{quantification}
+\keyword{Partial_capture_history_quantification}

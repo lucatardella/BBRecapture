@@ -26,4 +26,4 @@ str(lizard)
 \references{
 Wanger T.C. et al. (2009) How to monitor elusive lizards: comparison of capture-recapture methods on giant day geckos (Gekkonidae, Phelsuma madagascariensis grandis) in the Masoala rainforest exhibit, Zurich Zoo. Ecological Research 24(2):345--353.
 }
-\keyword{datasets}
+\keyword{Datasets}

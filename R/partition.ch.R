@@ -47,7 +47,6 @@
 #'
 #' @export
 
-
 partition.ch=function(quantify.ch.fun,t,breaks,include.lowest=T,type=c("list","index"), ... ){
 
   ch.list=unlist(list.historylabels(t))

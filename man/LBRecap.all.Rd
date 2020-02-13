@@ -56,7 +56,9 @@ This function \code{LBRecap.all} can be computing intensive for high values of \
 }
 }
 \references{
-Alunni Fegatelli D. (2013) New methods for capture-recapture modelling with behavioural response and individual heterogeneity.
+Alunni Fegatelli, D. and Tardella, L. (2016), Flexible behavioral capture–recapture modeling. Biometrics, 72(1):125-135. doi:10.1111/biom.12417
+
+Alunni Fegatelli D. (2013) New methods for capture-recapture modelling with behavioural response and individual heterogeneity. http://hdl.handle.net/11573/918752
 
 Alunni Fegatelli D., Tardella L. (2012) Improved inference on capture recapture models with behavioural effects. Statistical Methods & Applications Applications Volume 22, Issue 1, pp 45-66 10.1007/s10260-012-0221-4
 
@@ -72,7 +74,5 @@ Yang H.C., Chao A. (2005) Modeling animals behavioral response by Markov chain m
 \author{
 Danilo Alunni Fegatelli and Luca Tardella
 }
-\keyword{Behavioural}
-\keyword{MLE}
-\keyword{Unconditional}
-\keyword{models,}
+\keyword{Behavioural_models}
+\keyword{Unconditional_MLE}

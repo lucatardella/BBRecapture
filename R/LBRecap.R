@@ -59,6 +59,10 @@
 #'    }
 #'
 #' @references
+#' Alunni Fegatelli, D. and Tardella, L. (2016), Flexible behavioral capture–recapture modeling. Biometrics, 72(1):125-135. doi:10.1111/biom.12417
+#'
+#' Alunni Fegatelli D. (2013) New methods for capture-recapture modelling with behavioural response and individual heterogeneity. http://hdl.handle.net/11573/918752
+#'
 #' Alunni Fegatelli, D. and Tardella, L. (2012) Improved inference on capture recapture models with behavioural effects. Statistical Methods & Applications Applications Volume 22, Issue 1, pp 45-66 10.1007/s10260-012-0221-4
 #'
 #' Farcomeni A. (2011) Recapture models under equality constraints for the conditional capture probabilities. Biometrika 98(1):237--242
@@ -73,7 +77,7 @@
 #' str(mod.Mb)
 #'
 #'
-#' @keywords Unconditional MLE Behavioural models
+#' @keywords Unconditional_MLE Behavioural_models
 #'
 #' @export
 LBRecap=function(data,

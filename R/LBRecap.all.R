@@ -39,7 +39,9 @@
 #' Nsup: upper \eqn{95 \%} confidence limit
 #'
 #' @references
-#' Alunni Fegatelli D. (2013) New methods for capture-recapture modelling with behavioural response and individual heterogeneity.
+#' Alunni Fegatelli, D. and Tardella, L. (2016), Flexible behavioral capture–recapture modeling. Biometrics, 72(1):125-135. doi:10.1111/biom.12417
+#'
+#' Alunni Fegatelli D. (2013) New methods for capture-recapture modelling with behavioural response and individual heterogeneity. http://hdl.handle.net/11573/918752
 #'
 #' Alunni Fegatelli D., Tardella L. (2012) Improved inference on capture recapture models with behavioural effects. Statistical Methods & Applications Applications Volume 22, Issue 1, pp 45-66 10.1007/s10260-012-0221-4
 #'
@@ -58,7 +60,7 @@
 #'  data(greatcopper)
 #'  LBRecap.all(greatcopper)
 #' }
-#' @keywords Behavioural models, Unconditional MLE
+#' @keywords Behavioural_models Unconditional_MLE
 #' @export
 LBRecap.all=function(data, last.column.count=FALSE, neval=1000, by.incr=1,which.mod=c("all","standard"),sort=c("default","AIC")){
 
